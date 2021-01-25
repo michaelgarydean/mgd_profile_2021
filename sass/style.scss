@@ -1,0 +1,137 @@
+$root_path: './';
+$intro_animation_length: 3s;
+$font-color: #D3D3D3;
+$hover-color: #FFFFFF;
+$background-color: #0B0B0B;
+
+/*
+* ===========
+* DEFINITIONS
+* ===========
+*/
+
+@font-face {
+	font-family: "Neue Montreal";
+	src: url($root_path + "fonts/neuemontreal-regular.woff") format("woff");
+  	font-weight: normal;
+  	font-style: normal;
+}
+
+@font-face {
+	font-family: "Neue Montreal";
+	src: url($root_path + "fonts/neuemontreal-bold.woff") format("woff");
+  	font-weight: bold;
+  	font-style: normal;
+}
+
+/*
+* ========
+* SITEWIDE
+* ========
+*/
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+	font-family: "Neue Montreal", Helvetica, Ariel, sans-serif;
+	color: $font-color;
+
+	background-color: $background-color;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/*
+* ========
+* PAGES
+* ========
+*/
+
+/* Vertically centered content using flex box */
+.centered-container {
+
+	display: flex;
+	min-height: 100vh;
+
+	align-items: center;
+	justify-content: center;
+
+	/* 
+	 * PAGE: Homepage title text 
+	 */
+	.landing-page-header {
+
+		text-align: center;
+
+		h1 {
+	    	display: inline; 
+
+			font-size: 12em;
+			line-height: 1.1em;
+		}
+
+		/* Animate Fade out of title text */
+		animation-name: fadeout;
+	 	animation-delay: calc(#{$intro_animation_length} - #{$intro_animation_length/3});
+	 	animation-duration: calc(#{$intro_animation_length}/3);
+	 	animation-timing-function: ease-in-out;
+	 	animation-fill-mode: forwards;
+	}
+
+	/* 
+	 * PAGE: The main menu
+	 */
+	.main-menu {
+		font-size: 6em;
+		line-height: 1.1em;
+
+		text-align: center;
+
+		/* Animate Fade out of title text */
+		animation-name: fadein;
+	 	animation-duration: calc(#{$intro_animation_length}/3);
+	 	animation-timing-function: ease-in-out;
+	 	animation-fill-mode: forwards;
+	}
+}
+
+
+
+/*
+* ========
+* ELEMENTS
+* ========
+*/
+
+ul {
+	margin: 0;
+	padding: 0;
+
+	list-style-type: none;
+}
+
+li:hover {
+	color: $hover-color;
+  	transition: 0.3s;
+}
+
+/*
+* ==========
+* ANIMATIONS
+* ==========
+*/
+
+@keyframes fadeout {
+    from 	{ opacity: 1; }
+    to 		{ opacity: 0; }
+}
+
+@keyframes fadein {
+    from 	{ opacity: 0; }
+    to   	{ opacity: 1; }
+}
