@@ -1,5 +1,18 @@
 $root_path: './';
+$assets_path: $root_path + 'assets/';
+
+$cursor_icon: $assets_path + 'icons/x-cursor.svg';
+$menu_icon: $assets_path + 'icons/closed-menu.svg';
+
+$menu_icon_size: 48px;
+
+$side_margin_outer: 30px;
+$top_margin_outer: 20px;
+
+$side_margin_inner: $menu_icon_size + $side_margin_outer;
+
 $intro_animation_length: 3s;
+
 $font-color: #D3D3D3;
 $hover-color: #FFFFFF;
 $background-color: #0B0B0B;
@@ -46,6 +59,33 @@ body {
     box-sizing: border-box;
 }
 
+* p:first-of-type {
+	margin-top: 0
+}
+
+* p:last-of-type {
+	margin-bottom: 0
+}
+
+/* padding around all content */
+.container {
+	padding: $top_margin_outer $side_margin_outer;
+}
+
+/* For the menu items */
+.big-link {
+
+}
+
+.big-link:hover, .big-link:focus {
+
+	/* make it white on hover */
+	filter: brightness(0) invert(1);
+
+  	cursor: pointer;
+  	cursor: url($cursor_icon) 16 16,  auto;
+}
+
 /*
 * ========
 * PAGES
@@ -56,7 +96,7 @@ body {
 .centered-container {
 
 	display: flex;
-	min-height: 100vh;
+	min-height: calc(100vh - #{$top_margin_outer}*2);
 
 	align-items: center;
 	justify-content: center;
@@ -86,7 +126,7 @@ body {
 	/* 
 	 * PAGE: The main menu
 	 */
-	.main-menu {
+	.main-menu-home {
 		font-size: 6em;
 		line-height: 1.1em;
 
@@ -97,6 +137,35 @@ body {
 	 	animation-duration: calc(#{$intro_animation_length}/3);
 	 	animation-timing-function: ease-in-out;
 	 	animation-fill-mode: forwards;
+	}
+
+	/* About page large centered texrt */
+	.large-centered-text {
+		padding: 0 $side_margin_inner;
+
+		font-size: 3em;
+		text-align: center;
+	}
+}
+
+/* header shown on pages navigating away from main/home menu */
+header {
+	position: absolute;
+	width: 100vw;
+	padding: 0 $side_margin_outer;
+
+	.main-menu-closed {
+
+		float: right;
+		margin: 0 $side_margin_outer;
+
+		.menu-icon {
+		    height: $menu_icon_size;
+		    width: $menu_icon_size;
+
+
+			content: url($menu_icon);
+		}
 	}
 }
 
@@ -115,9 +184,10 @@ ul {
 	list-style-type: none;
 }
 
-li:hover {
-	color: $hover-color;
-  	transition: 0.3s;
+a {
+	text-decoration: none;
+	color: inherit;
+	cursor: inherit;
 }
 
 /*

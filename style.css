@@ -35,6 +35,27 @@ body {
   box-sizing: border-box;
 }
 
+* p:first-of-type {
+  margin-top: 0;
+}
+
+* p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* padding around all content */
+.container {
+  padding: 20px 30px;
+}
+
+/* For the menu items */
+.big-link:hover, .big-link:focus {
+  /* make it white on hover */
+  filter: brightness(0) invert(1);
+  cursor: pointer;
+  cursor: url("./assets/icons/x-cursor.svg") 16 16, auto;
+}
+
 /*
 * ========
 * PAGES
@@ -43,7 +64,7 @@ body {
 /* Vertically centered content using flex box */
 .centered-container {
   display: flex;
-  min-height: 100vh;
+  min-height: calc(100vh - 20px*2);
   align-items: center;
   justify-content: center;
   /* 
@@ -52,6 +73,7 @@ body {
   /* 
    * PAGE: The main menu
    */
+  /* About page large centered texrt */
 }
 .centered-container .landing-page-header {
   text-align: center;
@@ -67,7 +89,7 @@ body {
   font-size: 12em;
   line-height: 1.1em;
 }
-.centered-container .main-menu {
+.centered-container .main-menu-home {
   font-size: 6em;
   line-height: 1.1em;
   text-align: center;
@@ -76,6 +98,27 @@ body {
   animation-duration: calc(3s/3);
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+}
+.centered-container .large-centered-text {
+  padding: 0 78px;
+  font-size: 3em;
+  text-align: center;
+}
+
+/* header shown on pages navigating away from main/home menu */
+header {
+  position: absolute;
+  width: 100vw;
+  padding: 0 30px;
+}
+header .main-menu-closed {
+  float: right;
+  margin: 0 30px;
+}
+header .main-menu-closed .menu-icon {
+  height: 48px;
+  width: 48px;
+  content: url("./assets/icons/closed-menu.svg");
 }
 
 /*
@@ -89,9 +132,10 @@ ul {
   list-style-type: none;
 }
 
-li:hover {
-  color: #FFFFFF;
-  transition: 0.3s;
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: inherit;
 }
 
 /*
