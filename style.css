@@ -11,6 +11,12 @@
 }
 @font-face {
   font-family: "Neue Montreal";
+  src: url("./fonts/neuemontreal-medium.woff") format("woff");
+  font-weight: medium;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Neue Montreal";
   src: url("./fonts/neuemontreal-bold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
@@ -43,9 +49,21 @@ body {
   margin-bottom: 0;
 }
 
+.fadein-on-load {
+  /* Animate Fade out of title text */
+  animation-name: fadein;
+  animation-duration: calc(3s/3);
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
 /* padding around all content */
 .container {
+  position: relative;
   padding: 20px 30px;
+  /* Full viewport, minus the margin/padding and the footer*/
+  /*min-height: calc(100vh - 20px*2);*/
+  min-height: 100vh;
 }
 
 /* For the menu items */
@@ -56,6 +74,22 @@ body {
   cursor: url("./assets/icons/x-cursor.svg") 16 16, auto;
 }
 
+.important-link {
+  font-size: 2em;
+  font-weight: bold;
+  color: #383838;
+}
+
+.menu-icon {
+  height: 48px;
+  width: 48px;
+  content: url("./assets/icons/closed-menu.svg");
+}
+
+.social-media-icons {
+  text-align: center;
+}
+
 /*
 * ========
 * PAGES
@@ -64,7 +98,8 @@ body {
 /* Vertically centered content using flex box */
 .centered-container {
   display: flex;
-  min-height: calc(100vh - 20px*2);
+  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   /* 
@@ -73,7 +108,12 @@ body {
   /* 
    * PAGE: The main menu
    */
-  /* About page large centered texrt */
+  /* 
+   * PAGE: About page large centered text 
+   */
+  /*
+   * PAGE: Teaching timeline
+   */
 }
 .centered-container .landing-page-header {
   text-align: center;
@@ -87,38 +127,67 @@ body {
 .centered-container .landing-page-header h1 {
   display: inline;
   font-size: 12em;
+  font-weight: medium;
   line-height: 1.1em;
+}
+.centered-container .main-menu-parent {
+  position: absolute;
+  bottom: 0px;
+  width: calc(100vw - 30px);
+  padding: inherit;
 }
 .centered-container .main-menu-home {
   font-size: 6em;
+  font-weight: bold;
   line-height: 1.1em;
   text-align: center;
-  /* Animate Fade out of title text */
-  animation-name: fadein;
-  animation-duration: calc(3s/3);
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
+}
+.centered-container .sub-menu-item {
+  margin: 2em 0;
 }
 .centered-container .large-centered-text {
   padding: 0 78px;
   font-size: 3em;
   text-align: center;
 }
+.centered-container .timeline {
+  margin: 100px 0;
+}
+.centered-container .timeline .timeline-entry {
+  font-size: 1em;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+.centered-container .timeline .timeline-entry h1, .centered-container .timeline .timeline-entry p {
+  display: inline;
+  font-size: inherit;
+}
+.centered-container .timeline .timeline-entry .timeline-date {
+  width: 80px;
+}
+.centered-container .timeline .timeline-entry .timeline-content {
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: #707070;
+  padding: 15px 40px;
+}
+.centered-container .timeline .timeline-entry:first-child .timeline-content {
+  padding-top: 0px;
+}
+.centered-container .timeline .timeline-entry:last-child .timeline-content {
+  padding-bottom: 0px;
+}
 
 /* header shown on pages navigating away from main/home menu */
-header {
-  position: absolute;
+.site-header {
+  position: fixed;
   width: 100vw;
   padding: 0 30px;
 }
-header .main-menu-closed {
+.site-header .main-menu-closed {
   float: right;
   margin: 0 30px;
-}
-header .main-menu-closed .menu-icon {
-  height: 48px;
-  width: 48px;
-  content: url("./assets/icons/closed-menu.svg");
 }
 
 /*

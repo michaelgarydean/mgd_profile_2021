@@ -7,15 +7,16 @@ $menu_icon: $assets_path + 'icons/closed-menu.svg';
 $menu_icon_size: 48px;
 
 $side_margin_outer: 30px;
-$top_margin_outer: 20px;
+$vertical_margin_outer: 20px;
 
 $side_margin_inner: $menu_icon_size + $side_margin_outer;
 
 $intro_animation_length: 3s;
 
-$font-color: #D3D3D3;
-$hover-color: #FFFFFF;
-$background-color: #0B0B0B;
+$font_color: #D3D3D3;
+$font_secondary_color: #383838;
+$hover_color: #FFFFFF;
+$background_color: #0B0B0B;
 
 /*
 * ===========
@@ -27,6 +28,13 @@ $background-color: #0B0B0B;
 	font-family: "Neue Montreal";
 	src: url($root_path + "fonts/neuemontreal-regular.woff") format("woff");
   	font-weight: normal;
+  	font-style: normal;
+}
+
+@font-face {
+	font-family: "Neue Montreal";
+	src: url($root_path + "fonts/neuemontreal-medium.woff") format("woff");
+  	font-weight: medium;
   	font-style: normal;
 }
 
@@ -50,9 +58,9 @@ body, html {
 
 body {
 	font-family: "Neue Montreal", Helvetica, Ariel, sans-serif;
-	color: $font-color;
+	color: $font_color;
 
-	background-color: $background-color;
+	background-color: $background_color;
 }
 
 * {
@@ -67,9 +75,22 @@ body {
 	margin-bottom: 0
 }
 
+.fadein-on-load {
+	/* Animate Fade out of title text */
+	animation-name: fadein;
+ 	animation-duration: calc(#{$intro_animation_length}/3);
+ 	animation-timing-function: ease-in-out;
+ 	animation-fill-mode: forwards;
+}
+
 /* padding around all content */
 .container {
-	padding: $top_margin_outer $side_margin_outer;
+	position: relative;
+	padding: $vertical_margin_outer $side_margin_outer;
+
+	/* Full viewport, minus the margin/padding and the footer*/
+	/*min-height: calc(100vh - #{$vertical_margin_outer}*2);*/
+	min-height: 100vh;
 }
 
 /* For the menu items */
@@ -86,6 +107,24 @@ body {
   	cursor: url($cursor_icon) 16 16,  auto;
 }
 
+.important-link {
+	font-size: 2em;
+	font-weight: bold;
+	color: $font_secondary_color;
+}
+
+.menu-icon {
+    height: $menu_icon_size;
+    width: $menu_icon_size;
+
+	content: url($menu_icon);
+}
+
+
+.social-media-icons {
+  text-align: center;
+}
+
 /*
 * ========
 * PAGES
@@ -96,7 +135,8 @@ body {
 .centered-container {
 
 	display: flex;
-	min-height: calc(100vh - #{$top_margin_outer}*2);
+  	flex-wrap: wrap;
+    flex-direction:column;
 
 	align-items: center;
 	justify-content: center;
@@ -112,6 +152,7 @@ body {
 	    	display: inline; 
 
 			font-size: 12em;
+			font-weight: medium;
 			line-height: 1.1em;
 		}
 
@@ -123,34 +164,95 @@ body {
 	 	animation-fill-mode: forwards;
 	}
 
+	.main-menu-parent {	
+		position: absolute;
+		bottom: 0px;
+		width: calc(100vw - #{$side_margin_outer});
+		padding: inherit;
+	}
+
 	/* 
 	 * PAGE: The main menu
 	 */
 	.main-menu-home {
 		font-size: 6em;
+		font-weight: bold;
 		line-height: 1.1em;
 
 		text-align: center;
-
-		/* Animate Fade out of title text */
-		animation-name: fadein;
-	 	animation-duration: calc(#{$intro_animation_length}/3);
-	 	animation-timing-function: ease-in-out;
-	 	animation-fill-mode: forwards;
 	}
 
-	/* About page large centered texrt */
+	.sub-menu-item {
+		margin: 2em 0;
+	}
+
+	/* 
+	 * PAGE: About page large centered text 
+	 */
 	.large-centered-text {
 		padding: 0 $side_margin_inner;
 
 		font-size: 3em;
 		text-align: center;
 	}
+
+	/*
+	 * PAGE: Teaching timeline
+	 */
+
+	 .timeline {
+
+		margin: 100px 0;
+
+	 	.timeline-entry {
+	 		font-size: 1em;
+
+	 		display: flex;
+		    flex-direction: row;
+		    align-items: baseline;
+
+	 		div {
+	 		}
+
+		 	h1, p {
+		 		display: inline;
+		 		font-size: inherit;
+
+		 	}
+
+		 	.timeline-date {
+		 		width: $vertical_margin_outer*4; 
+		 	}
+
+		 	.timeline-content {
+		 		    border-left-style: solid;
+				    border-left-width: 1px;
+				    border-left-color: #707070;
+
+				    padding: $side_margin_outer/2 $vertical_margin_outer*2;
+		 	}
+	 	}
+
+
+		.timeline-entry:first-child {
+		 	.timeline-content {
+				    padding-top: 0px;
+		 	}
+		}
+
+		.timeline-entry:last-child {
+		 	.timeline-content {
+				    padding-bottom: 0px;
+		 	}
+		}
+
+	 }
+
 }
 
 /* header shown on pages navigating away from main/home menu */
-header {
-	position: absolute;
+.site-header {
+	position: fixed;
 	width: 100vw;
 	padding: 0 $side_margin_outer;
 
@@ -158,15 +260,10 @@ header {
 
 		float: right;
 		margin: 0 $side_margin_outer;
-
-		.menu-icon {
-		    height: $menu_icon_size;
-		    width: $menu_icon_size;
-
-
-			content: url($menu_icon);
-		}
 	}
+}
+
+.site-footer {
 }
 
 
