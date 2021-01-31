@@ -12,7 +12,7 @@
 @font-face {
   font-family: "Neue Montreal";
   src: url("./fonts/neuemontreal-medium.woff") format("woff");
-  font-weight: medium;
+  font-weight: 500;
   font-style: normal;
 }
 @font-face {
@@ -53,14 +53,6 @@ body {
 
 * p:last-of-type {
   margin-bottom: 0;
-}
-
-.fadein-on-load {
-  /* Animate Fade out of title text */
-  animation-name: fadein;
-  animation-duration: calc(3s/3);
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
 }
 
 /* padding around all content */
@@ -147,18 +139,19 @@ body {
 }
 .centered-container .landing-page-header {
   text-align: center;
-  /* Animate Fade out of title text */
-  animation-name: fadeout;
-  animation-delay: calc(3s - 1s);
-  animation-duration: calc(3s/3);
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
 }
 .centered-container .landing-page-header h1 {
   display: inline;
-  font-size: 12em;
-  font-weight: medium;
+  font-size: 4em;
+  font-weight: 500;
   line-height: 1.1em;
+}
+.centered-container .landing-page-header span {
+  display: block;
+  color: #383838;
+  font-size: 2em;
+  font-weight: 100;
+  line-height: 1.5em;
 }
 .centered-container .main-menu-home {
   font-size: 6em;
@@ -168,6 +161,7 @@ body {
 }
 .centered-container .sub-menu-item {
   margin: 2em 0;
+  font-weight: 500;
 }
 .centered-container .large-centered-text {
   padding: 0 78px;
@@ -271,6 +265,23 @@ a {
 * ANIMATIONS
 * ==========
 */
+.fadein-on-load {
+  /* Animate Fade out of title text */
+  animation-name: fadein;
+  animation-duration: calc(3s/3);
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.fadeout-on-delay {
+  /* Animate Fade out of title text */
+  animation-name: fadeout;
+  animation-delay: calc(3s - 1s);
+  animation-duration: calc(3s/3);
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
 @keyframes fadeout {
   from {
     opacity: 1;
