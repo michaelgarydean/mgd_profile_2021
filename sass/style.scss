@@ -45,6 +45,13 @@ $background_color: #0B0B0B;
   	font-style: normal;
 }
 
+@font-face {
+	font-family: "Neue Montreal";
+	src: url($root_path + "fonts/neuemontreal-thin.woff") format("woff");
+  	font-weight: 100;
+  	font-style: normal;
+}
+
 /*
 * ========
 * SITEWIDE
@@ -125,11 +132,41 @@ body {
   text-align: center;
 }
 
+/* header shown on pages navigating away from main/home menu */
+.site-header {
+	position: fixed;
+	z-index: 1;
+
+	width: 100vw;
+	padding: 0 $side_margin_outer;
+
+	.main-menu-closed {
+
+		float: right;
+		margin: 0 $side_margin_outer;
+	}
+}
+
+.site-footer {
+	display: none;
+}
+
+
 /*
 * ========
 * PAGES
 * ========
 */
+
+/* Vertically center the div containing the centered flex box */
+.centered-parent {	
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
 
 /* Vertically centered content using flex box */
 .centered-container {
@@ -164,12 +201,6 @@ body {
 	 	animation-fill-mode: forwards;
 	}
 
-	.main-menu-parent {	
-		position: absolute;
-		bottom: 0px;
-		width: calc(100vw - #{$side_margin_outer});
-		padding: inherit;
-	}
 
 	/* 
 	 * PAGE: The main menu
@@ -200,9 +231,9 @@ body {
 	 * PAGE: Teaching timeline
 	 */
 
-	 .timeline {
+	 .timeline, .timeline-large {
 
-		margin: 100px 0;
+		margin: 100px 0; /* Vertical spacing of timeline from other elements */
 
 	 	.timeline-entry {
 	 		font-size: 1em;
@@ -217,11 +248,11 @@ body {
 		 	h1, p {
 		 		display: inline;
 		 		font-size: inherit;
-
 		 	}
 
 		 	.timeline-date {
-		 		width: $vertical_margin_outer*4; 
+		 		min-width: $vertical_margin_outer*4; 
+		 		max-width: $vertical_margin_outer*4; 
 		 	}
 
 		 	.timeline-content {
@@ -248,24 +279,77 @@ body {
 
 	 }
 
+	 .timeline-large {
+
+		margin: 200px 0; /* Vertical spacing of timeline from other elements */
+
+	 	.timeline-entry {
+
+	 		.timeline-date, .timeline-content {
+
+	 			font-size: 8em;
+    			padding-bottom: 3em;
+    			line-height: 0.9em;
+	 		}
+
+	 		.timeline-date {
+		 		min-width: $vertical_margin_outer*20; 
+		 		max-width: $vertical_margin_outer*20; 
+
+	 		}
+
+	 		.timeline-content {
+
+	 			.timeline-item {
+
+	 				h1, span, p {
+	 					display: block;
+	 					margin: 0;
+	 				}
+
+	 				h1 {
+	 				}
+
+	 				span {
+	 					font-size: 0.5em;
+	 					color: $font_secondary_color;
+	 					line-height: 1em;
+    					margin: 0.25em 0;
+
+	 				}
+
+	 				p {
+
+	 					font-size: 0.25em;
+	 					line-height: 1.25em;
+	 					font-weight: 100;
+	 					letter-spacing: 0.02em;
+	 					margin-top:0.75em;
+	 				}
+
+	 			}
+
+	 		}
+	 	}
+	 }
+
 }
 
-/* header shown on pages navigating away from main/home menu */
-.site-header {
-	position: fixed;
-	width: 100vw;
-	padding: 0 $side_margin_outer;
+/*
+ * PAGE: EXPERIMENTS
+ */
 
-	.main-menu-closed {
+.experiment-container {
+	position: absolute;
+	top: 0;
+	left: 0;
 
-		float: right;
-		margin: 0 $side_margin_outer;
+	.glcanvas {
+		width: 100vw;
+		height: 100vh; 
+		tabindex: 1;
 	}
 }
-
-.site-footer {
-}
-
 
 
 /*

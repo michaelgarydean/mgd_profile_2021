@@ -1,0 +1,68 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+
+  <link rel="stylesheet" href="style.css">
+  <title>Michael Gary Dean</title>
+
+
+
+    <style>
+        canvas {
+            display: block;
+            position: absolute;
+            outline:0;
+        }
+
+        footer a,
+        footer a:hover,
+        footer a:active {
+            color: #24baa7;
+        }
+    </style>
+</head>
+
+<body>
+	<div class="container fadein-on-load">
+
+		<header class="site-header">
+			<nav class="main-menu-closed">
+				<a href="menu.html"><img class="menu-icon big-link"/></a>
+			</nav>
+		</header>
+
+		<div class="experiment-container">
+			<canvas id="glcanvas"></canvas>
+		    <libs/>
+		    <script type="text/javascript" src="js/experiments/01-rotated-sticks/patch.js" async></script>
+		    <corelibs/>
+		</div>
+
+	</div>
+
+    <script>
+
+        function patchInitialized(patch) {
+            // You can now access the patch object (patch), register variable watchers and so on
+        }
+
+        function patchFinishedLoading(patch) {
+            // The patch is ready now, all assets have been loaded
+        }
+
+        document.addEventListener('CABLES.jsLoaded', function (event) {
+            CABLES.patch = new CABLES.Patch({
+                patch: CABLES.exportedPatch,
+                prefixAssetPath: '',
+                glCanvasId: 'glcanvas',
+                glCanvasResizeToWindow: true,
+                onPatchLoaded: patchInitialized,
+                onFinishedLoading: patchFinishedLoading,
+            });
+        });
+    </script>
+</body>
+</html>

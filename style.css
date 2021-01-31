@@ -21,6 +21,12 @@
   font-weight: bold;
   font-style: normal;
 }
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("./fonts/neuemontreal-thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
 /*
 * ========
 * SITEWIDE
@@ -90,11 +96,35 @@ body {
   text-align: center;
 }
 
+/* header shown on pages navigating away from main/home menu */
+.site-header {
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
+  padding: 0 30px;
+}
+.site-header .main-menu-closed {
+  float: right;
+  margin: 0 30px;
+}
+
+.site-footer {
+  display: none;
+}
+
 /*
 * ========
 * PAGES
 * ========
 */
+/* Vertically center the div containing the centered flex box */
+.centered-parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
 /* Vertically centered content using flex box */
 .centered-container {
   display: flex;
@@ -130,12 +160,6 @@ body {
   font-weight: medium;
   line-height: 1.1em;
 }
-.centered-container .main-menu-parent {
-  position: absolute;
-  bottom: 0px;
-  width: calc(100vw - 30px);
-  padding: inherit;
-}
 .centered-container .main-menu-home {
   font-size: 6em;
   font-weight: bold;
@@ -150,44 +174,79 @@ body {
   font-size: 3em;
   text-align: center;
 }
-.centered-container .timeline {
+.centered-container .timeline, .centered-container .timeline-large {
   margin: 100px 0;
+  /* Vertical spacing of timeline from other elements */
 }
-.centered-container .timeline .timeline-entry {
+.centered-container .timeline .timeline-entry, .centered-container .timeline-large .timeline-entry {
   font-size: 1em;
   display: flex;
   flex-direction: row;
   align-items: baseline;
 }
-.centered-container .timeline .timeline-entry h1, .centered-container .timeline .timeline-entry p {
+.centered-container .timeline .timeline-entry h1, .centered-container .timeline .timeline-entry p, .centered-container .timeline-large .timeline-entry h1, .centered-container .timeline-large .timeline-entry p {
   display: inline;
   font-size: inherit;
 }
-.centered-container .timeline .timeline-entry .timeline-date {
-  width: 80px;
+.centered-container .timeline .timeline-entry .timeline-date, .centered-container .timeline-large .timeline-entry .timeline-date {
+  min-width: 80px;
+  max-width: 80px;
 }
-.centered-container .timeline .timeline-entry .timeline-content {
+.centered-container .timeline .timeline-entry .timeline-content, .centered-container .timeline-large .timeline-entry .timeline-content {
   border-left-style: solid;
   border-left-width: 1px;
   border-left-color: #707070;
   padding: 15px 40px;
 }
-.centered-container .timeline .timeline-entry:first-child .timeline-content {
+.centered-container .timeline .timeline-entry:first-child .timeline-content, .centered-container .timeline-large .timeline-entry:first-child .timeline-content {
   padding-top: 0px;
 }
-.centered-container .timeline .timeline-entry:last-child .timeline-content {
+.centered-container .timeline .timeline-entry:last-child .timeline-content, .centered-container .timeline-large .timeline-entry:last-child .timeline-content {
   padding-bottom: 0px;
 }
-
-/* header shown on pages navigating away from main/home menu */
-.site-header {
-  position: fixed;
-  width: 100vw;
-  padding: 0 30px;
+.centered-container .timeline-large {
+  margin: 200px 0;
+  /* Vertical spacing of timeline from other elements */
 }
-.site-header .main-menu-closed {
-  float: right;
-  margin: 0 30px;
+.centered-container .timeline-large .timeline-entry .timeline-date, .centered-container .timeline-large .timeline-entry .timeline-content {
+  font-size: 8em;
+  padding-bottom: 3em;
+  line-height: 0.9em;
+}
+.centered-container .timeline-large .timeline-entry .timeline-date {
+  min-width: 400px;
+  max-width: 400px;
+}
+.centered-container .timeline-large .timeline-entry .timeline-content .timeline-item h1, .centered-container .timeline-large .timeline-entry .timeline-content .timeline-item span, .centered-container .timeline-large .timeline-entry .timeline-content .timeline-item p {
+  display: block;
+  margin: 0;
+}
+.centered-container .timeline-large .timeline-entry .timeline-content .timeline-item span {
+  font-size: 0.5em;
+  color: #383838;
+  line-height: 1em;
+  margin: 0.25em 0;
+}
+.centered-container .timeline-large .timeline-entry .timeline-content .timeline-item p {
+  font-size: 0.25em;
+  line-height: 1.25em;
+  font-weight: 100;
+  letter-spacing: 0.02em;
+  margin-top: 0.75em;
+}
+
+/*
+ * PAGE: EXPERIMENTS
+ */
+.experiment-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.experiment-container .glcanvas {
+  width: 100vw;
+  height: 100vh;
+  tabindex: 1;
 }
 
 /*
