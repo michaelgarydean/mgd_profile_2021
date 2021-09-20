@@ -5,6 +5,7 @@ $cursor_icon: $assets_path + 'icons/x-cursor.svg';
 $menu_icon: $assets_path + 'icons/closed-menu.svg';
 
 $menu_icon_size: 48px;
+$social_media_icons_size: 20px;
 
 $side_margin_outer: 30px;
 $vertical_margin_outer: 20px;
@@ -12,11 +13,17 @@ $vertical_margin_outer: 20px;
 $side_margin_inner: $menu_icon_size + $side_margin_outer;
 
 $intro_animation_length: 3s;
+$transition_speed: 0.4s;
 
 $font_color: #D3D3D3;
 $font_secondary_color: #383838;
 $hover_color: #FFFFFF;
 $background_color: #0B0B0B;
+
+$secondary_color: #D69066;
+
+/* SVG Sprites: https://www.sitepoint.com/css-with-svg/ */
+/* https://css-tricks.com/svg-use-external-source/ */
 
 /*
 * ===========
@@ -68,6 +75,62 @@ body {
 	color: $font_color;
 
 	background-color: $background_color;
+
+	font-size: 24px;
+}
+
+/* TEMP */
+main {
+	height: 500vh;
+}
+
+h1 {
+	margin: 0;
+}
+
+button {
+  
+  display: inline-block;
+
+  padding: 16px 24px;
+  margin: 4px 2px;
+
+  text-align: center;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  background-color: transparent;
+  color: white;
+
+  border-width: 2px;
+  border-color: white;
+  border-style: solid;
+
+  transition-duration: $transition_speed;
+}
+
+button:hover {
+	color: $secondary_color;
+	border-color: $secondary_color;
+}
+
+a {
+  	transition-duration: $transition_speed;
+
+}
+
+a:hover {
+	color: $secondary_color;
+	cursor: pointer;
+}
+
+a svg path {
+  	transition-duration: $transition_speed;
+}
+
+a svg:hover path {
+    fill: $secondary_color;;
 }
 
 * {
@@ -75,36 +138,62 @@ body {
 }
 
 * p:first-of-type {
-	margin-top: 0
+	// margin-top: 0
 }
 
 * p:last-of-type {
-	margin-bottom: 0
+	// margin-bottom: 0
 }
 
 
 /* padding around all content */
 .container {
-	position: relative;
-	padding: $vertical_margin_outer $side_margin_outer;
 
 	/* Full viewport, minus the margin/padding and the footer*/
 	/*min-height: calc(100vh - #{$vertical_margin_outer}*2);*/
 	min-height: 100vh;
 }
 
+.page-padding {
+	padding: $vertical_margin_outer $side_margin_outer;
+
+}
+
+/* Buttons to call to action */
+
 /* For the menu items */
 .big-link {
 	font-weight: 500;
 }
 
+.cta-button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: $transition_speed;
+  cursor: pointer;
+}
+
+.cta-button {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
+.cta-button:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
 .big-link:hover, .big-link:focus {
 
-	/* make it white on hover */
-	filter: brightness(0) invert(1);
-
   	cursor: pointer;
-  	cursor: url($cursor_icon) 16 16,  auto;
+  	cursor: url($cursor_icon) 12 12, auto;
 }
 
 .important-link {
@@ -120,9 +209,18 @@ body {
 	content: url($menu_icon);
 }
 
+.button-minimal {
+
+}
+
+.icon {
+	 width: $social_media_icons_size;
+	 height: $social_media_icons_size;
+	 margin: 10px;
+}
 
 .social-media-icons {
-  text-align: center;
+  // text-align: center;
 }
 
 /* header shown on pages navigating away from main/home menu */
@@ -131,14 +229,48 @@ body {
 	z-index: 1;
 
 	width: 100vw;
-	padding: 0 $side_margin_outer;
+
+	mix-blend-mode: difference;
+
+  /**
+   * Lay out the children of this container with
+   * flexbox, which is horizontal by default.
+   */
+  display: flex;
+
+  /**
+   * Make the container put as much space as possible
+   * between its children, with the children at either
+   * end laying flush against the container's edges.
+   */
+  justify-content: space-between;
+
+  	.site-title {
+  		text-transform: uppercase;
+  	}
 
 	.main-menu-closed {
 
 		float: right;
-		margin: 0 $side_margin_outer;
+	}
+
+	.header-section {
+	    /**
+	     * Lay out the children of this container with
+	     * flexbox.
+	     */
+	    display: flex;
+
+	    /**
+	     * Align the children in the center, along
+	     * the main axis. By default the children will
+	     * align along their top edges.
+	     */
+	    align-items: center;
 	}
 }
+
+
 
 .site-footer {
 	display: none;
@@ -150,6 +282,58 @@ body {
 * PAGES
 * ========
 */
+
+.hero {
+    position: relative;
+
+    /* Sizing */
+    width: 100vw;
+    height: 100vh;
+	display: flex;
+
+    align-items: center;
+
+    /* Background styles */
+    background-image: url('assets/hero-image_4x.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    .hero-inner {
+    	.sub-text {
+    		line-height: 1.75em;
+		    margin: 0;
+		    margin-bottom: 10px;
+    	}
+    	// position: fixed;
+    	// z-index: 1;
+    }
+}
+
+.hero-footer {
+	position: absolute;
+	bottom: 0;
+	width: 100vw;
+
+	display: flex;
+	justify-content: space-between;
+
+	.hero-footer-section {
+	    /**
+	     * Lay out the children of this container with
+	     * flexbox.
+	     */
+	    display: flex;
+
+	    /**
+	     * Align the children in the center, along
+	     * the main axis. By default the children will
+	     * align along their top edges.
+	     */
+	    align-items: center;
+	}
+}
 
 /* Vertically center the div containing the centered flex box */
 .centered-parent {	
