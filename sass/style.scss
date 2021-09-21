@@ -4,28 +4,42 @@ $assets_path: $root_path + 'assets/';
 $cursor_icon: $assets_path + 'icons/x-cursor.svg';
 $menu_icon: $assets_path + 'icons/closed-menu.svg';
 
+/* colors */
+//$font_color: #D3D3D3;
+$font_color: #FFF;
+$font_secondary_color: #383838;
+$hover_color: #FFFFFF;
+$background_color: #000;
+$secondary_color: #D69066;
+
+/* typography */
+$font_size: 15px;
+$menu_font_size: 1.5em;
+$menu_font_size_mobile: 1.5em;
+$hero_heading_font_size: 3em;
+
+$line_height: 1.5em;
+$hero_heading_line_height: 1.75em;
+$letter-spacing: 0.05em;
+
+/* icons */
 $menu_icon_size: 48px;
 $social_media_icons_size: 20px;
 
+/* global margins */
 $side_margin_outer: 30px;
 $vertical_margin_outer: 20px;
 
-$font_size: 20px;
-
 $side_margin_inner: $menu_icon_size + $side_margin_outer;
 
+/* animations */
 $intro_animation_length: 3s;
 $transition_speed: 0.4s;
 
-$font_color: #D3D3D3;
-$font_secondary_color: #383838;
-$hover_color: #FFFFFF;
-$background_color: #0B0B0B;
-
-$secondary_color: #D69066;
-
-/* SVG Sprites: https://www.sitepoint.com/css-with-svg/ */
-/* https://css-tricks.com/svg-use-external-source/ */
+/* media */
+$media_medium_device_width: 800px;
+$media_small_device_width: 400px;
+$footer_scaling_mobile: 0.8;
 
 /*
 * ===========
@@ -67,9 +81,15 @@ $secondary_color: #D69066;
 * ========
 */
 
+/* ---- ELEMENTS ---- */
+
 body, html {
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
+
+    font-weight: 500;
+
 }
 
 body {
@@ -79,19 +99,85 @@ body {
 	background-color: $background_color;
 
 	font-size: $font_size;
+	letter-spacing: $letter_spacing;
 }
 
-/* TEMP */
+header {
+	
+	font-weight: bold;
+
+	h1 {
+		margin: 0;
+		font-weight: inherit;
+  		text-transform: uppercase;
+	}
+
+	nav {
+		a {
+			font-size: $menu_font_size;
+		}
+
+	}
+}
+
 main {
-	height: 500vh;
+	a {
+		text-decoration: underline;
+	}
 }
 
+section {
+	padding: 20vh 0;
+
+	section {
+		padding: 2em 0;
+	}
+}
+
+footer {
+    position: relative;
+
+    /* Sizing */
+    width: 100%;
+    height: 100vh;
+	display: flex;
+
+    align-items: center;
+}
+
+/* Margin's are set using the h1-h6 elements NOT the paragraphs */
 h1 {
-	font-size: 40px;
+	font-size: $menu_font_size;
+}
+
+h2 {
+	text-transform: uppercase;
+}
+
+h3 {
+	font-weight: 500;
+}
+
+p {
 	margin: 0;
+	line-height: $line_height;
+}
+
+figcaption {
+	margin: 1em 0;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+
+	list-style-type: none;
 }
 
 a {
+	text-decoration: none;
+	color: inherit;
+	cursor: inherit;
   	transition-duration: $transition_speed;
 
 }
@@ -101,6 +187,44 @@ a:hover {
 	cursor: pointer;
 }
 
+p {
+	white-space: pre-line;
+}
+
+
+/* MISC */
+
+* {
+    box-sizing: border-box;
+}
+
+* p:first-of-type {
+	// margin-top: 0
+}
+
+* p:last-of-type {
+	// margin-bottom: 0
+}
+
+@media (max-width: $media_small_device_width) {
+	$header_font_size: $menu_font_size_mobile;
+
+	header {
+		nav {
+			a {
+				font-size: $header_font_size
+			}
+		}
+	}
+
+	h1 {
+		font-size: $header_font_size
+	}
+}
+
+/* ICONS - ie. SOCIAL MEDIA */
+/* SVG Sprites: https://www.sitepoint.com/css-with-svg/ */
+/* https://css-tricks.com/svg-use-external-source/ */
 a svg path {
 	fill: $font_color;
   	transition-duration: $transition_speed;
@@ -110,6 +234,7 @@ a svg:hover path {
     fill: $secondary_color;;
 }
 
+/* BUTTONS */
 button {
   
   display: inline-block;
@@ -137,20 +262,84 @@ button:hover {
 	border-color: $secondary_color;
 }
 
-* {
-    box-sizing: border-box;
+/*  SOCIAL MEDIA LINKS */
+.social-media-icons-horizontal a svg {
+	 margin: 0 10px;
+
+	 width: $social_media_icons_size;
+	 height: $social_media_icons_size;
 }
 
-* p:first-of-type {
-	// margin-top: 0
+@media (max-width: $media_medium_device_width) {
+
+	.social-media-icons-horizontal a svg {
+		 margin: 0 5px;
+	}
 }
 
-* p:last-of-type {
-	// margin-bottom: 0
+
+.footer-wrapper .social-media-icons-horizontal a svg {
+}
+
+.social-media-icons-horizontal a:first-of-type svg {
+	 margin-left: 0px;
+}
+
+.social-media-icons-horizontal a:last-of-type svg {
+	 margin-right: 0px;
+}
+
+/* MISC */
+
+.footer-contact-title, address {
+	letter-spacing: 0.01em;
+	font-weight: 500;
+	font-style: normal; 
 }
 
 
-/* padding around all content */
+
+/* ---- HEADER ---- */
+
+/* MENU */
+@media (max-width: $media_medium_device_width) {
+	.header-menu-item {
+		display: block;
+		text-align: right;
+	}
+
+	#header-title {
+		word-spacing: 9999999px;
+	}
+}
+.site-header {
+	position: fixed;
+	z-index: 1;
+
+	width: 100vw;
+
+	mix-blend-mode: difference;
+
+	display: flex;
+	justify-content: space-between;
+
+  	.site-title {
+  	}
+
+	.main-menu {
+		a {
+			padding: 0 0 0 20px;
+		}
+	}
+
+	.header-section {
+	    display: flex;
+	    align-items: center;
+	}
+}
+
+/* ---- GENERAL CONTENT ---- */
+
 .container {
 
 	/* Full viewport, minus the margin/padding and the footer*/
@@ -162,6 +351,209 @@ button:hover {
 	padding: $vertical_margin_outer $side_margin_outer;
 
 }
+
+/* RESPONSIVE COLUMNS */
+
+.flex-content-parent {
+	display: flex;
+  	flex-direction: row;
+	align-items: start;
+	justify-content: space-between;
+
+	.flex-two-column {
+		width: 47%;
+	} 
+
+	.flex-three-column {
+		margin: 1em 0;
+  		justify-content: center;
+		width: 30%;
+
+		img {
+			max-width:100%;
+			max-height:100%;
+		}
+	} 
+}
+
+@media (max-width: $media_medium_device_width) {
+  .flex-content-parent {
+    flex-direction: column;
+
+	.flex-two-column {
+		width: 100%;
+	} 
+
+	.flex-three-column {
+		width: 100%;
+	} 
+  }
+}
+
+/* ---- FOOTER ---- */
+
+.footer-wrapper {
+}
+
+.footer-scaling {
+
+	/* scale the whole footer */
+	font-size: 1.5em;
+	line-height: 1.2em;
+}
+
+@media (max-width: $media_medium_device_width) {
+	.footer-scaling {
+
+		/* scale the whole footer */
+		font-size: #{1.5em * $footer_scaling_mobile};
+		line-height: 1.2em;
+	}
+}
+
+.site-footer {
+	display: none;
+}
+
+.footer-contact-name {
+	letter-spacing: 0.06em;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.footer-contact-title {
+	letter-spacing: 0.03em;
+}
+
+.footer-contact-links {
+	margin-top: 15px;
+}
+
+/* The YouTube SVG isn't a square and is special... */
+#youtube {
+	width: 26px;
+}
+
+
+/* MEDIA EMBEDS */
+
+/* @see 	https://stackoverflow.com/questions/42858199/vimeo-full-width */
+
+.vimeo-embed-container {
+  --video--width: 1296;
+  --video--height: 540;
+
+  position: relative;
+  padding-bottom: calc(var(--video--height) / var(--video--width) * 100%); /* 41.66666667% */
+  overflow: hidden;
+  max-width: 100%;
+  background: black;
+}
+
+.vimeo-embed-container iframe,
+.vimeo-embed-container object,
+.vimeo-embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/*
+* ========
+* PAGES
+* ========
+*/
+
+/* --- FRONT PAGE --- */
+.hero {
+    position: relative;
+
+    /* Sizing */
+    width: 100%;
+    height: 100vh;
+	display: flex;
+
+    align-items: center;
+
+
+    .hero-background-wrapper {
+
+	    /* Background styles */
+	    // background-size: cover;
+	    // background-position: center center;
+	    // background-repeat: no-repeat;
+	    // background-attachment: fixed;
+
+    	/* background-attachment: fixed; not supported on iOS */
+    	/* @see		https://codepen.io/callumfindlay/pen/VaYeoW */
+
+	    clip: rect(0, auto, auto, 0);
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+
+    	.hero-background {
+	    	background-image: url($assets_path + "michael-gary-dean_hero-image_upscaled_4k.png");
+		    position: fixed;
+		    display: block;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+		    background-size: cover;
+		    background-position: center center;
+		    transform: translateZ(0);
+		    will-change: transform;
+		}
+    }
+
+    .hero-inner {
+    	h2 {
+    		font-size: $hero_heading_font_size;
+    		margin: 0;
+    	}
+    	.sub-text {
+    		line-height: $hero_heading_line_height;
+		    margin: 0;
+		    margin-bottom: 10px;
+    	}
+    	// position: fixed;
+    	// z-index: 1;
+    }
+}
+
+.hero-footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+
+	display: flex;
+	justify-content: space-between;
+
+	.hero-footer-section {
+	    display: flex;
+	    align-items: center;
+	}
+}
+
+#profile-history {
+    font-weight: 400;
+}
+
+
+
+
+
+
+
+
+/* --- OLD STUFF - remove? --- */
+
 
 /* Buttons to call to action */
 
@@ -187,129 +579,6 @@ button:hover {
     width: $menu_icon_size;
 
 	content: url($menu_icon);
-}
-
-.icon {
-	 width: $social_media_icons_size;
-	 height: $social_media_icons_size;
-	 margin: 10px;
-}
-
-.social-media-icons {
-  // text-align: center;
-}
-
-/* header shown on pages navigating away from main/home menu */
-.site-header {
-	position: fixed;
-	z-index: 1;
-
-	width: 100vw;
-
-	mix-blend-mode: difference;
-
-  /**
-   * Lay out the children of this container with
-   * flexbox, which is horizontal by default.
-   */
-  display: flex;
-
-  /**
-   * Make the container put as much space as possible
-   * between its children, with the children at either
-   * end laying flush against the container's edges.
-   */
-  justify-content: space-between;
-
-  	.site-title {
-  		text-transform: uppercase;
-  	}
-
-	.main-menu {
-		a {
-			padding: 0 0 0 20px;
-		}
-	}
-
-	.header-section {
-	    /**
-	     * Lay out the children of this container with
-	     * flexbox.
-	     */
-	    display: flex;
-
-	    /**
-	     * Align the children in the center, along
-	     * the main axis. By default the children will
-	     * align along their top edges.
-	     */
-	    align-items: center;
-	}
-}
-
-
-
-.site-footer {
-	display: none;
-}
-
-
-/*
-* ========
-* PAGES
-* ========
-*/
-
-.hero {
-    position: relative;
-
-    /* Sizing */
-    width: 100vw;
-    height: 100vh;
-	display: flex;
-
-    align-items: center;
-
-    /* Background styles */
-    background-image: url('assets/hero-image_opt.png');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-
-    .hero-inner {
-    	.sub-text {
-    		line-height: 1.75em;
-		    margin: 0;
-		    margin-bottom: 10px;
-    	}
-    	// position: fixed;
-    	// z-index: 1;
-    }
-}
-
-.hero-footer {
-	position: absolute;
-	bottom: 0;
-	width: 100vw;
-
-	display: flex;
-	justify-content: space-between;
-
-	.hero-footer-section {
-	    /**
-	     * Lay out the children of this container with
-	     * flexbox.
-	     */
-	    display: flex;
-
-	    /**
-	     * Align the children in the center, along
-	     * the main axis. By default the children will
-	     * align along their top edges.
-	     */
-	    align-items: center;
-	}
 }
 
 /* Vertically center the div containing the centered flex box */
@@ -505,26 +774,6 @@ button:hover {
 		height: 100vh; 
 		tabindex: 1;
 	}
-}
-
-
-/*
-* ========
-* ELEMENTS
-* ========
-*/
-
-ul {
-	margin: 0;
-	padding: 0;
-
-	list-style-type: none;
-}
-
-a {
-	text-decoration: none;
-	color: inherit;
-	cursor: inherit;
 }
 
 /*

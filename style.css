@@ -1,5 +1,9 @@
-/* SVG Sprites: https://www.sitepoint.com/css-with-svg/ */
-/* https://css-tricks.com/svg-use-external-source/ */
+/* colors */
+/* typography */
+/* icons */
+/* global margins */
+/* animations */
+/* media */
 /*
 * ===========
 * DEFINITIONS
@@ -34,29 +38,86 @@
 * SITEWIDE
 * ========
 */
+/* ---- ELEMENTS ---- */
 body, html {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
+  font-weight: 500;
 }
 
 body {
   font-family: "Neue Montreal", Helvetica, Ariel, sans-serif;
-  color: #D3D3D3;
-  background-color: #0B0B0B;
-  font-size: 20px;
+  color: #FFF;
+  background-color: #000;
+  font-size: 15px;
+  letter-spacing: 0.05em;
 }
 
-/* TEMP */
-main {
-  height: 500vh;
+header {
+  font-weight: bold;
 }
-
-h1 {
-  font-size: 40px;
+header h1 {
   margin: 0;
+  font-weight: inherit;
+  text-transform: uppercase;
+}
+header nav a {
+  font-size: 1.5em;
+}
+
+main a {
+  text-decoration: underline;
+}
+
+section {
+  padding: 20vh 0;
+}
+section section {
+  padding: 2em 0;
+}
+
+footer {
+  position: relative;
+  /* Sizing */
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Margin's are set using the h1-h6 elements NOT the paragraphs */
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  text-transform: uppercase;
+}
+
+h3 {
+  font-weight: 500;
+}
+
+p {
+  margin: 0;
+  line-height: 1.5em;
+}
+
+figcaption {
+  margin: 1em 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 a {
+  text-decoration: none;
+  color: inherit;
+  cursor: inherit;
   transition-duration: 0.4s;
 }
 
@@ -65,8 +126,29 @@ a:hover {
   cursor: pointer;
 }
 
+p {
+  white-space: pre-line;
+}
+
+/* MISC */
+* {
+  box-sizing: border-box;
+}
+
+@media (max-width: 400px) {
+  header nav a {
+    font-size: 1.5em;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+}
+/* ICONS - ie. SOCIAL MEDIA */
+/* SVG Sprites: https://www.sitepoint.com/css-with-svg/ */
+/* https://css-tricks.com/svg-use-external-source/ */
 a svg path {
-  fill: #D3D3D3;
+  fill: #FFF;
   transition-duration: 0.4s;
 }
 
@@ -74,6 +156,7 @@ a svg:hover path {
   fill: #D69066;
 }
 
+/* BUTTONS */
 button {
   display: inline-block;
   padding: 16px 24px;
@@ -84,7 +167,7 @@ button {
   background-color: transparent;
   color: white;
   border-width: 2px;
-  border-color: #D3D3D3;
+  border-color: #FFF;
   border-style: solid;
   transition-duration: 0.4s;
 }
@@ -94,11 +177,62 @@ button:hover {
   border-color: #D69066;
 }
 
-* {
-  box-sizing: border-box;
+/*  SOCIAL MEDIA LINKS */
+.social-media-icons-horizontal a svg {
+  margin: 0 10px;
+  width: 20px;
+  height: 20px;
 }
 
-/* padding around all content */
+@media (max-width: 800px) {
+  .social-media-icons-horizontal a svg {
+    margin: 0 5px;
+  }
+}
+.social-media-icons-horizontal a:first-of-type svg {
+  margin-left: 0px;
+}
+
+.social-media-icons-horizontal a:last-of-type svg {
+  margin-right: 0px;
+}
+
+/* MISC */
+.footer-contact-title, address {
+  letter-spacing: 0.01em;
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* ---- HEADER ---- */
+/* MENU */
+@media (max-width: 800px) {
+  .header-menu-item {
+    display: block;
+    text-align: right;
+  }
+
+  #header-title {
+    word-spacing: 9999999px;
+  }
+}
+.site-header {
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
+  mix-blend-mode: difference;
+  display: flex;
+  justify-content: space-between;
+}
+.site-header .main-menu a {
+  padding: 0 0 0 20px;
+}
+.site-header .header-section {
+  display: flex;
+  align-items: center;
+}
+
+/* ---- GENERAL CONTENT ---- */
 .container {
   /* Full viewport, minus the margin/padding and the footer*/
   /*min-height: calc(100vh - 20px*2);*/
@@ -109,6 +243,162 @@ button:hover {
   padding: 20px 30px;
 }
 
+/* RESPONSIVE COLUMNS */
+.flex-content-parent {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
+}
+.flex-content-parent .flex-two-column {
+  width: 47%;
+}
+.flex-content-parent .flex-three-column {
+  margin: 1em 0;
+  justify-content: center;
+  width: 30%;
+}
+.flex-content-parent .flex-three-column img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@media (max-width: 800px) {
+  .flex-content-parent {
+    flex-direction: column;
+  }
+  .flex-content-parent .flex-two-column {
+    width: 100%;
+  }
+  .flex-content-parent .flex-three-column {
+    width: 100%;
+  }
+}
+/* ---- FOOTER ---- */
+.footer-scaling {
+  /* scale the whole footer */
+  font-size: 1.5em;
+  line-height: 1.2em;
+}
+
+@media (max-width: 800px) {
+  .footer-scaling {
+    /* scale the whole footer */
+    font-size: 1.2em;
+    line-height: 1.2em;
+  }
+}
+.site-footer {
+  display: none;
+}
+
+.footer-contact-name {
+  letter-spacing: 0.06em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.footer-contact-title {
+  letter-spacing: 0.03em;
+}
+
+.footer-contact-links {
+  margin-top: 15px;
+}
+
+/* The YouTube SVG isn't a square and is special... */
+#youtube {
+  width: 26px;
+}
+
+/* MEDIA EMBEDS */
+/* @see 	https://stackoverflow.com/questions/42858199/vimeo-full-width */
+.vimeo-embed-container {
+  --video--width: 1296;
+  --video--height: 540;
+  position: relative;
+  padding-bottom: calc(var(--video--height) / var(--video--width) * 100%);
+  /* 41.66666667% */
+  overflow: hidden;
+  max-width: 100%;
+  background: black;
+}
+
+.vimeo-embed-container iframe,
+.vimeo-embed-container object,
+.vimeo-embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*
+* ========
+* PAGES
+* ========
+*/
+/* --- FRONT PAGE --- */
+.hero {
+  position: relative;
+  /* Sizing */
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.hero .hero-background-wrapper {
+  /* Background styles */
+  /* background-attachment: fixed; not supported on iOS */
+  /* @see		https://codepen.io/callumfindlay/pen/VaYeoW */
+  clip: rect(0, auto, auto, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero .hero-background-wrapper .hero-background {
+  background-image: url("./assets/michael-gary-dean_hero-image_upscaled_4k.png");
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  transform: translateZ(0);
+  will-change: transform;
+}
+.hero .hero-inner h2 {
+  font-size: 3em;
+  margin: 0;
+}
+.hero .hero-inner .sub-text {
+  line-height: 1.75em;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.hero-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.hero-footer .hero-footer-section {
+  display: flex;
+  align-items: center;
+}
+
+#profile-history {
+  font-weight: 400;
+}
+
+/* --- OLD STUFF - remove? --- */
 /* Buttons to call to action */
 /* For the menu items */
 .big-link {
@@ -130,100 +420,6 @@ button:hover {
   height: 48px;
   width: 48px;
   content: url("./assets/icons/closed-menu.svg");
-}
-
-.icon {
-  width: 20px;
-  height: 20px;
-  margin: 10px;
-}
-
-/* header shown on pages navigating away from main/home menu */
-.site-header {
-  position: fixed;
-  z-index: 1;
-  width: 100vw;
-  mix-blend-mode: difference;
-  /**
-   * Lay out the children of this container with
-   * flexbox, which is horizontal by default.
-   */
-  display: flex;
-  /**
-   * Make the container put as much space as possible
-   * between its children, with the children at either
-   * end laying flush against the container's edges.
-   */
-  justify-content: space-between;
-}
-.site-header .site-title {
-  text-transform: uppercase;
-}
-.site-header .main-menu a {
-  padding: 0 0 0 20px;
-}
-.site-header .header-section {
-  /**
-   * Lay out the children of this container with
-   * flexbox.
-   */
-  display: flex;
-  /**
-   * Align the children in the center, along
-   * the main axis. By default the children will
-   * align along their top edges.
-   */
-  align-items: center;
-}
-
-.site-footer {
-  display: none;
-}
-
-/*
-* ========
-* PAGES
-* ========
-*/
-.hero {
-  position: relative;
-  /* Sizing */
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  /* Background styles */
-  background-image: url("assets/hero-image_opt.png");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-.hero .hero-inner .sub-text {
-  line-height: 1.75em;
-  margin: 0;
-  margin-bottom: 10px;
-}
-
-.hero-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100vw;
-  display: flex;
-  justify-content: space-between;
-}
-.hero-footer .hero-footer-section {
-  /**
-   * Lay out the children of this container with
-   * flexbox.
-   */
-  display: flex;
-  /**
-   * Align the children in the center, along
-   * the main axis. By default the children will
-   * align along their top edges.
-   */
-  align-items: center;
 }
 
 /* Vertically center the div containing the centered flex box */
@@ -358,23 +554,6 @@ button:hover {
   width: 100vw;
   height: 100vh;
   tabindex: 1;
-}
-
-/*
-* ========
-* ELEMENTS
-* ========
-*/
-ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-  cursor: inherit;
 }
 
 /*
