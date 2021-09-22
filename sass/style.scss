@@ -53,30 +53,43 @@ $footer_scaling_mobile: 0.8;
 
 @font-face {
 	font-family: "Neue Montreal";
-	src: url($root_path + "fonts/neuemontreal-thin.woff") format("woff");
   	font-weight: 100;
   	font-style: normal;
+  	src:   	local('NeueMontreal-Thin'),
+        	url($root_path + "fonts/neuemontreal-thin.woff2") format("woff2"),
+        	url($root_path + "fonts/neuemontreal-thin.woff") format("woff");
+    unicode-range: U+000-5FF; /* Download only latin glyphs */
 }
 
 @font-face {
 	font-family: "Neue Montreal";
-	src: url($root_path + "fonts/neuemontreal-regular.woff") format("woff");
   	font-weight: normal;
   	font-style: normal;
+  	src:  	local('NeueMontreal'),
+        	local('NeueMontreal-Regular'),
+			url($root_path + "fonts/neuemontreal-regular.woff2") format("woff2"),
+			url($root_path + "fonts/neuemontreal-regular.woff") format("woff");
+    unicode-range: U+000-5FF; /* Download only latin glyphs */
 }
 
 @font-face {
 	font-family: "Neue Montreal";
-	src: url($root_path + "fonts/neuemontreal-medium.woff") format("woff");
   	font-weight: 500;
   	font-style: normal;
+  	src:   	local('NeueMontreal-Medium'),
+			url($root_path + "fonts/neuemontreal-medium.woff2") format("woff2"),
+			url($root_path + "fonts/neuemontreal-medium.woff") format("woff");
+    unicode-range: U+000-5FF; /* Download only latin glyphs */
 }
 
 @font-face {
 	font-family: "Neue Montreal";
-	src: url($root_path + "fonts/neuemontreal-bold.woff") format("woff");
   	font-weight: bold;
   	font-style: normal;
+  	src:  	local('NeueMontreal-Bold'),
+			url($root_path + "fonts/neuemontreal-bold.woff2") format("woff2"),
+			url($root_path + "fonts/neuemontreal-bold.woff") format("woff");
+    unicode-range: U+000-5FF; /* Download only latin glyphs */
 }
 
 /*
@@ -370,6 +383,11 @@ input:-webkit-autofill:hover {
 	letter-spacing: 0.01em;
 	font-weight: 500;
 	font-style: normal; 
+}
+
+.see-more-link {
+	display: block;
+    margin-top: 1em;
 }
 
 
