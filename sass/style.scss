@@ -563,10 +563,53 @@ input:-webkit-autofill:hover {
   color: $font_color;
 }
 
-#mc-embedded-subscribe {
+
+/* WE ARE CURRENTLY WORKING HERE */
+/* @see https://mailchimp.com/help/css-hooks-for-customizing-forms/ */
+input.button {
   @extend button;
+  margin: 0;
+  padding: 0;
 }
 
+input.button:hover {
+	background-color: transparent;
+}
+
+.mc_embed_signup_mgd_theme .mc_form_mgd_theme {
+	padding: 0 !important;
+}
+
+.mc_embed_signup_mgd_theme .mc_form_mgd_theme input.mce_inline_error {
+    border: 2px solid $secondary_color !important;
+}
+
+.mc_embed_signup_mgd_theme .mc_form_mgd_theme div.mce_inline_error {
+    color: $secondary_color !important;
+    background-color: transparent !important;
+}
+
+#mc_embed_signup #mce-success-response {
+    color: $secondary_color !important;
+    display: none;
+}
+
+#mce-responses {
+    padding: 0;
+    margin: 0;
+}
+
+div.response {
+    padding: 0;
+}
+
+#mc_embed_signup .mc-field-group {
+    padding-bottom: 0 !important;
+}
+
+.mc-field-group {
+    margin: 0 !important;
+}
 
 /*
 * ========
