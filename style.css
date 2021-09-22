@@ -2,6 +2,7 @@
 /* typography */
 /* icons */
 /* global margins */
+/* USE THIS FOR MARGINS FOR ALMOST ALL SINGLE ITEMS + @see .single-item-container, .embed-container */
 /* animations */
 /* media */
 /*
@@ -73,7 +74,7 @@ main a {
 section {
   padding: 20vh 0;
 }
-section section {
+section .profile-sub-section {
   padding: 2em 0;
 }
 
@@ -157,7 +158,7 @@ a svg:hover path {
 }
 
 /* BUTTONS */
-button {
+button, #mc-embedded-subscribe {
   display: inline-block;
   padding: 16px 24px;
   margin: 4px 2px;
@@ -172,9 +173,53 @@ button {
   transition-duration: 0.4s;
 }
 
-button:hover {
+button:hover, #mc-embedded-subscribe:hover {
   color: #D69066;
   border-color: #D69066;
+}
+
+input[type=text], input[type=email]:focus {
+  border: none;
+  /* Remove default borders */
+  border-radius: 1px;
+  /* Sadly outline does not round! therefore...*/
+}
+
+input[type=text]:focus, input[type=email]:focus {
+  outline: none;
+  /* Remove default outline and use border or box-shadow */
+  box-shadow: 0 0 0 2px #D69066;
+  /* Full freedom. (works also with border-radius) */
+}
+
+/* Change Autocomplete styles in Chrome*/
+/* @see https://css-tricks.com/snippets/css/change-autocomplete-styles-webkit-browsers/ */
+input:-webkit-autofill,
+select:-webkit-autofill,
+textarea:-webkit-autofill {
+  border: 1px solid #000;
+  -webkit-text-fill-color: #FFF;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill:focus {
+  font-weight: bold;
+  border: 1px solid #000;
+  -webkit-text-fill-color: #D69066;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: color 5000s ease-in-out 0s;
+}
+
+select:-webkit-autofill:hover,
+textarea:-webkit-autofill:hover,
+input:-webkit-autofill:hover {
+  border: 1px solid #000;
+  -webkit-text-fill-color: #D69066;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: color 5000s ease-in-out 0s;
 }
 
 /*  SOCIAL MEDIA LINKS */
@@ -239,6 +284,14 @@ button:hover {
   min-height: 100vh;
 }
 
+.single-item-container, .embed-container {
+  margin: 1em 0;
+}
+
+.single-item-container:first-of-type, .embed-container:first-of-type {
+  margin: 0;
+}
+
 .page-padding {
   padding: 20px 30px;
 }
@@ -254,7 +307,6 @@ button:hover {
   width: 47%;
 }
 .flex-content-parent .flex-three-column {
-  margin: 1em 0;
   justify-content: center;
   width: 30%;
 }
@@ -313,14 +365,7 @@ button:hover {
 
 /* MEDIA EMBEDS */
 /* @see 	https://stackoverflow.com/questions/42858199/vimeo-full-width */
-.embed-container:first-of-type {
-  margin: 1em 0;
-}
-
-.embed-container:first-of-type {
-  margin: 0;
-}
-
+/* vimeo */
 .vimeo {
   --video--width: 1296;
   --video--height: 540;
@@ -340,6 +385,45 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+/* spotify */
+/* soundcloud */
+/* mailchimp */
+#mc_embed_signup {
+  background: transparent !important;
+}
+
+.mc-field-group {
+  margin: 1em 0;
+}
+
+#mce-EMAIL {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #FFF;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: solid;
+  border-bottom-color: #FFF;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #FFF;
+  opacity: 1;
+  /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #FFF;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #FFF;
 }
 
 /*
@@ -404,164 +488,6 @@ button:hover {
 
 #profile-history {
   font-weight: 400;
-}
-
-/* --- OLD STUFF - remove? --- */
-/* Buttons to call to action */
-/* For the menu items */
-.big-link {
-  font-weight: 500;
-}
-
-.big-link:hover, .big-link:focus {
-  cursor: pointer;
-  cursor: url("./assets/icons/x-cursor.svg") 12 12, auto;
-}
-
-.important-link {
-  font-size: 2em;
-  font-weight: bold;
-  color: #383838;
-}
-
-.menu-icon {
-  height: 48px;
-  width: 48px;
-  content: url("./assets/icons/closed-menu.svg");
-}
-
-/* Vertically center the div containing the centered flex box */
-.centered-parent {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-/* Vertically centered content using flex box */
-.centered-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* 
-   * PAGE: Homepage title text 
-   */
-  /* 
-   * PAGE: The main menu
-   */
-  /* 
-   * PAGE: About page large centered text 
-   */
-  /*
-   * PAGE: Teaching timeline
-   */
-}
-.centered-container .landing-page-header {
-  text-align: center;
-}
-.centered-container .landing-page-header h1 {
-  display: inline;
-  font-size: 4em;
-  font-weight: 500;
-  line-height: 1.1em;
-}
-.centered-container .landing-page-header span {
-  display: block;
-  color: #383838;
-  font-size: 2em;
-  font-weight: 100;
-  line-height: 1.5em;
-}
-.centered-container .main-menu-home {
-  font-size: 6em;
-  font-weight: bold;
-  line-height: 1.1em;
-  text-align: center;
-}
-.centered-container .sub-menu-item {
-  margin: 2em 0;
-  font-weight: 500;
-}
-.centered-container .large-centered-text {
-  padding: 0 78px;
-  font-size: 3em;
-  text-align: center;
-}
-.centered-container .timeline, .centered-container .timeline-large {
-  margin: 100px 0;
-  /* Vertical spacing of timeline from other elements */
-}
-.centered-container .timeline .timeline-entry, .centered-container .timeline-large .timeline-entry {
-  font-size: 1em;
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-}
-.centered-container .timeline .timeline-entry h1, .centered-container .timeline .timeline-entry p, .centered-container .timeline-large .timeline-entry h1, .centered-container .timeline-large .timeline-entry p {
-  display: inline;
-  font-size: inherit;
-}
-.centered-container .timeline .timeline-entry .timeline-date, .centered-container .timeline-large .timeline-entry .timeline-date {
-  min-width: 80px;
-  max-width: 80px;
-}
-.centered-container .timeline .timeline-entry .timeline-content, .centered-container .timeline-large .timeline-entry .timeline-content {
-  border-left-style: solid;
-  border-left-width: 1px;
-  border-left-color: #707070;
-  padding: 15px 40px;
-}
-.centered-container .timeline .timeline-entry:first-child .timeline-content, .centered-container .timeline-large .timeline-entry:first-child .timeline-content {
-  padding-top: 0px;
-}
-.centered-container .timeline .timeline-entry:last-child .timeline-content, .centered-container .timeline-large .timeline-entry:last-child .timeline-content {
-  padding-bottom: 0px;
-}
-.centered-container .timeline-large {
-  margin: 200px 0;
-  /* Vertical spacing of timeline from other elements */
-}
-.centered-container .timeline-large .timeline-entry .timeline-date, .centered-container .timeline-large .timeline-entry .timeline-content {
-  font-size: 8em;
-  padding-bottom: 3em;
-  line-height: 0.9em;
-}
-.centered-container .timeline-large .timeline-entry .timeline-date {
-  min-width: 400px;
-  max-width: 400px;
-}
-.centered-container .timeline-large .timeline-entry .timeline-content .timeline-item h1, .centered-container .timeline-large .timeline-entry .timeline-content .timeline-item span, .centered-container .timeline-large .timeline-entry .timeline-content .timeline-item p {
-  display: block;
-  margin: 0;
-}
-.centered-container .timeline-large .timeline-entry .timeline-content .timeline-item span {
-  font-size: 0.5em;
-  color: #383838;
-  line-height: 1em;
-  margin: 0.25em 0;
-}
-.centered-container .timeline-large .timeline-entry .timeline-content .timeline-item p {
-  font-size: 0.25em;
-  line-height: 1.25em;
-  font-weight: 100;
-  letter-spacing: 0.02em;
-  margin-top: 0.75em;
-}
-
-/*
- * PAGE: EXPERIMENTS
- */
-.experiment-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.experiment-container .glcanvas {
-  width: 100vw;
-  height: 100vh;
-  tabindex: 1;
 }
 
 /*

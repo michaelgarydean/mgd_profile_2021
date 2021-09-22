@@ -5,16 +5,19 @@ $cursor_icon: $assets_path + 'icons/x-cursor.svg';
 $menu_icon: $assets_path + 'icons/closed-menu.svg';
 
 /* colors */
+
 //$font_color: #D3D3D3;
+//$font_secondary_color: #383838;
+//$hover_color: #FFFFFF;
+
 $font_color: #FFF;
-$font_secondary_color: #383838;
-$hover_color: #FFFFFF;
 $background_color: #000;
 $secondary_color: #D69066;
 
 /* typography */
 $font_size: 15px;
-$menu_font_size: 1.5em;
+$heading_font_size: 1.5em;
+$menu_font_size: $heading_font_size;
 $menu_font_size_mobile: 1.5em;
 $hero_heading_font_size: 3em;
 
@@ -29,7 +32,7 @@ $social_media_icons_size: 20px;
 /* global margins */
 $side_margin_outer: 30px;
 $vertical_margin_outer: 20px;
-$container_margins: 1em 0;
+$container_margins: 1em 0; /* USE THIS FOR MARGINS FOR ALMOST ALL SINGLE ITEMS + @see .single-item-container, .embed-container */
 
 $side_margin_inner: $menu_icon_size + $side_margin_outer;
 
@@ -130,7 +133,7 @@ main {
 section {
 	padding: 20vh 0;
 
-	section {
+	.profile-sub-section {
 		padding: 2em 0;
 	}
 }
@@ -208,18 +211,18 @@ p {
 }
 
 @media (max-width: $media_small_device_width) {
-	$header_font_size: $menu_font_size_mobile;
+	$header_font_size_mobile: $menu_font_size_mobile;
 
 	header {
 		nav {
 			a {
-				font-size: $header_font_size
+				font-size: $header_font_size_mobile
 			}
 		}
 	}
 
 	h1 {
-		font-size: $header_font_size
+		font-size: $header_font_size_mobile
 	}
 }
 
@@ -261,6 +264,53 @@ button {
 button:hover {
 	color: $secondary_color;
 	border-color: $secondary_color;
+}
+
+// input[type=text]:focus, input[type=email]:focus{
+//   outline: 1px solid $secondary_color;     /* oranges! yey */
+
+// }
+
+input[type=text], input[type=email]:focus {
+  border: none;        /* Remove default borders */
+  border-radius: 1px; /* Sadly outline does not round! therefore...*/
+}
+input[type=text]:focus, input[type=email]:focus{
+  outline: none;      /* Remove default outline and use border or box-shadow */
+  box-shadow: 0 0 0 2px $secondary_color; /* Full freedom. (works also with border-radius) */
+}
+
+/* Change Autocomplete styles in Chrome*/
+
+/* @see https://css-tricks.com/snippets/css/change-autocomplete-styles-webkit-browsers/ */
+input:-webkit-autofill,
+select:-webkit-autofill,
+textarea:-webkit-autofill {
+  border: 1px solid $background_color;
+  -webkit-text-fill-color: $font_color;
+  -webkit-box-shadow: 0 0 0px 1000px $background_color inset;
+  transition: color 5000s ease-in-out 0s;
+
+}
+
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill:focus {
+	font-weight: bold;
+  border: 1px solid $background_color;
+  -webkit-text-fill-color: $secondary_color;
+  -webkit-box-shadow: 0 0 0px 1000px $background_color inset;
+  transition: color 5000s ease-in-out 0s;
+}
+
+select:-webkit-autofill:hover,
+textarea:-webkit-autofill:hover,
+input:-webkit-autofill:hover {
+  border: 1px solid $background_color;
+  -webkit-text-fill-color: $secondary_color;
+  -webkit-box-shadow: 0 0 0px 1000px $background_color inset;
+  transition: color 5000s ease-in-out 0s;
+
 }
 
 /*  SOCIAL MEDIA LINKS */
@@ -348,6 +398,14 @@ button:hover {
 	min-height: 100vh;
 }
 
+.single-item-container {
+	margin: $container_margins;
+}
+
+.single-item-container:first-of-type {
+	margin: 0;
+}
+
 .page-padding {
 	padding: $vertical_margin_outer $side_margin_outer;
 
@@ -366,7 +424,6 @@ button:hover {
 	} 
 
 	.flex-three-column {
-		margin: $container_margins;
   		justify-content: center;
 		width: 30%;
 
@@ -399,7 +456,7 @@ button:hover {
 .footer-scaling {
 
 	/* scale the whole footer */
-	font-size: 1.5em;
+	font-size: $menu_font_size;
 	line-height: 1.2em;
 }
 
@@ -407,7 +464,7 @@ button:hover {
 	.footer-scaling {
 
 		/* scale the whole footer */
-		font-size: #{1.5em * $footer_scaling_mobile};
+		font-size: #{$menu_font_size * $footer_scaling_mobile};
 		line-height: 1.2em;
 	}
 }
@@ -437,16 +494,13 @@ button:hover {
 
 
 /* MEDIA EMBEDS */
+.embed-container {
+	@extend .single-item-container;
+}
 
 /* @see 	https://stackoverflow.com/questions/42858199/vimeo-full-width */
-.embed-container:first-of-type {
-	margin: $container_margins;
-}
 
-.embed-container:first-of-type {
-	margin: 0;
-}
-
+/* vimeo */
 .vimeo {
   --video--width: 1296;
   --video--height: 540;
@@ -467,6 +521,50 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+/* spotify */
+
+/* soundcloud */
+
+/* mailchimp */
+#mc_embed_signup {
+	background: transparent !important;
+} 
+
+.mc-field-group {
+	margin: $container_margins;
+}
+
+#mce-EMAIL {
+    font-size: $heading_font_size;
+    font-weight: bold;
+    
+    color: $font_color;
+
+    width: 100%;
+
+	background: transparent;
+    border: none;
+    border-bottom: solid;
+    border-bottom-color: $font_color;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: $font_color;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: $font_color;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: $font_color;
+}
+
+#mc-embedded-subscribe {
+  @extend button;
 }
 
 
@@ -552,237 +650,6 @@ button:hover {
 
 #profile-history {
     font-weight: 400;
-}
-
-
-
-
-
-
-
-
-/* --- OLD STUFF - remove? --- */
-
-
-/* Buttons to call to action */
-
-/* For the menu items */
-.big-link {
-	font-weight: 500;
-}
-
-.big-link:hover, .big-link:focus {
-
-  	cursor: pointer;
-  	cursor: url($cursor_icon) 12 12, auto;
-}
-
-.important-link {
-	font-size: 2em;
-	font-weight: bold;
-	color: $font_secondary_color;
-}
-
-.menu-icon {
-    height: $menu_icon_size;
-    width: $menu_icon_size;
-
-	content: url($menu_icon);
-}
-
-/* Vertically center the div containing the centered flex box */
-.centered-parent {	
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 100%;
-}
-
-
-/* Vertically centered content using flex box */
-.centered-container {
-
-	display: flex;
-  	flex-wrap: wrap;
-    flex-direction:column;
-
-	align-items: center;
-	justify-content: center;
-
-	/* 
-	 * PAGE: Homepage title text 
-	 */
-	.landing-page-header {
-
-		text-align: center;
-
-		h1 {
-	    	display: inline; 
-
-			font-size: 4em;
-			font-weight: 500;
-			line-height: 1.1em;
-		}
-
-		span {
-			display: block;
-			color: $font_secondary_color;
-			font-size: 2em;
-    		font-weight: 100;
-    		line-height: 1.5em;
-		}
-	}
-
-
-	/* 
-	 * PAGE: The main menu
-	 */
-	.main-menu-home {
-		font-size: 6em;
-		font-weight: bold;
-		line-height: 1.1em;
-
-		text-align: center;
-	}
-
-	.sub-menu-item {
-		margin: 2em 0;
-		font-weight: 500;
-	}
-
-	/* 
-	 * PAGE: About page large centered text 
-	 */
-	.large-centered-text {
-		padding: 0 $side_margin_inner;
-
-		font-size: 3em;
-		text-align: center;
-	}
-
-	/*
-	 * PAGE: Teaching timeline
-	 */
-
-	 .timeline, .timeline-large {
-
-		margin: 100px 0; /* Vertical spacing of timeline from other elements */
-
-	 	.timeline-entry {
-	 		font-size: 1em;
-
-	 		display: flex;
-		    flex-direction: row;
-		    align-items: baseline;
-
-	 		div {
-	 		}
-
-		 	h1, p {
-		 		display: inline;
-		 		font-size: inherit;
-		 	}
-
-		 	.timeline-date {
-		 		min-width: $vertical_margin_outer*4; 
-		 		max-width: $vertical_margin_outer*4; 
-		 	}
-
-		 	.timeline-content {
-		 		    border-left-style: solid;
-				    border-left-width: 1px;
-				    border-left-color: #707070;
-
-				    padding: $side_margin_outer/2 $vertical_margin_outer*2;
-		 	}
-	 	}
-
-
-		.timeline-entry:first-child {
-		 	.timeline-content {
-				    padding-top: 0px;
-		 	}
-		}
-
-		.timeline-entry:last-child {
-		 	.timeline-content {
-				    padding-bottom: 0px;
-		 	}
-		}
-
-	 }
-
-	 .timeline-large {
-
-		margin: 200px 0; /* Vertical spacing of timeline from other elements */
-
-	 	.timeline-entry {
-
-	 		.timeline-date, .timeline-content {
-
-	 			font-size: 8em;
-    			padding-bottom: 3em;
-    			line-height: 0.9em;
-	 		}
-
-	 		.timeline-date {
-		 		min-width: $vertical_margin_outer*20; 
-		 		max-width: $vertical_margin_outer*20; 
-
-	 		}
-
-	 		.timeline-content {
-
-	 			.timeline-item {
-
-	 				h1, span, p {
-	 					display: block;
-	 					margin: 0;
-	 				}
-
-	 				h1 {
-	 				}
-
-	 				span {
-	 					font-size: 0.5em;
-	 					color: $font_secondary_color;
-	 					line-height: 1em;
-    					margin: 0.25em 0;
-
-	 				}
-
-	 				p {
-
-	 					font-size: 0.25em;
-	 					line-height: 1.25em;
-	 					font-weight: 100;
-	 					letter-spacing: 0.02em;
-	 					margin-top:0.75em;
-	 				}
-
-	 			}
-
-	 		}
-	 	}
-	 }
-
-}
-
-/*
- * PAGE: EXPERIMENTS
- */
-
-.experiment-container {
-	position: absolute;
-	top: 0;
-	left: 0;
-
-	.glcanvas {
-		width: 100vw;
-		height: 100vh; 
-		tabindex: 1;
-	}
 }
 
 /*
