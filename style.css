@@ -219,7 +219,7 @@ button:hover {
 .site-header {
   position: fixed;
   z-index: 1;
-  width: 100vw;
+  width: 100%;
   mix-blend-mode: difference;
   display: flex;
   justify-content: space-between;
@@ -313,20 +313,28 @@ button:hover {
 
 /* MEDIA EMBEDS */
 /* @see 	https://stackoverflow.com/questions/42858199/vimeo-full-width */
-.vimeo-embed-container {
+.embed-container:first-of-type {
+  margin: 1em 0;
+}
+
+.embed-container:first-of-type {
+  margin: 0;
+}
+
+.vimeo {
   --video--width: 1296;
   --video--height: 540;
   position: relative;
-  padding-bottom: calc(var(--video--height) / var(--video--width) * 100%);
-  /* 41.66666667% */
+  padding-bottom: 56.25%;
+  /* 16:9 */
   overflow: hidden;
   max-width: 100%;
   background: black;
 }
 
-.vimeo-embed-container iframe,
-.vimeo-embed-container object,
-.vimeo-embed-container embed {
+.vimeo iframe,
+.vimeo object,
+.vimeo embed {
   position: absolute;
   top: 0;
   left: 0;

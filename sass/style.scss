@@ -29,6 +29,7 @@ $social_media_icons_size: 20px;
 /* global margins */
 $side_margin_outer: 30px;
 $vertical_margin_outer: 20px;
+$container_margins: 1em 0;
 
 $side_margin_inner: $menu_icon_size + $side_margin_outer;
 
@@ -316,7 +317,7 @@ button:hover {
 	position: fixed;
 	z-index: 1;
 
-	width: 100vw;
+	width: 100%;
 
 	mix-blend-mode: difference;
 
@@ -365,7 +366,7 @@ button:hover {
 	} 
 
 	.flex-three-column {
-		margin: 1em 0;
+		margin: $container_margins;
   		justify-content: center;
 		width: 30%;
 
@@ -438,21 +439,29 @@ button:hover {
 /* MEDIA EMBEDS */
 
 /* @see 	https://stackoverflow.com/questions/42858199/vimeo-full-width */
+.embed-container:first-of-type {
+	margin: $container_margins;
+}
 
-.vimeo-embed-container {
+.embed-container:first-of-type {
+	margin: 0;
+}
+
+.vimeo {
   --video--width: 1296;
   --video--height: 540;
 
   position: relative;
-  padding-bottom: calc(var(--video--height) / var(--video--width) * 100%); /* 41.66666667% */
+  //padding-bottom: calc(var(--video--height) / var(--video--width) * 100%); /* 41.66666667% */
+  padding-bottom: 56.25%; /* 16:9 */
   overflow: hidden;
   max-width: 100%;
   background: black;
 }
 
-.vimeo-embed-container iframe,
-.vimeo-embed-container object,
-.vimeo-embed-container embed {
+.vimeo iframe,
+.vimeo object,
+.vimeo embed {
   position: absolute;
   top: 0;
   left: 0;
