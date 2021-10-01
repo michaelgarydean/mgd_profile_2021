@@ -444,10 +444,6 @@ input:-webkit-autofill:hover {
 	margin: $container_margins;
 }
 
-.single-item-container:first-of-type {
-	margin: 0;
-}
-
 .page-padding {
 	padding: $vertical_margin_outer $side_margin_outer;
 
@@ -477,6 +473,12 @@ input:-webkit-autofill:hover {
 }
 
 @media (max-width: $media_medium_device_width) {
+
+
+	.single-item-container:first-of-type {
+		margin: 0;
+	}
+
   .flex-content-parent {
     flex-direction: column;
 
