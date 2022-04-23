@@ -542,34 +542,62 @@ input:-webkit-autofill:hover {
 	@extend .single-item-container;
 }
 
-/* instagram feed */
-.nc-section {
-	background-color: inherit !important;
+/* instagram feed - nocodeapi */
+
+#instafeed {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(33rem, 1fr));
+  grid-gap: 1px;
+
+	a {
+		position: relative;
+  		// border: 1px solid;
+  		border-color: black;
+		box-sizing: border-box;
+  	}
+
+	a:before {
+		content: '';
+		display: block;
+		padding-top: 100%;
+	}
+
+	a>img {
+		position: absolute;
+	  	object-fit: cover;
+	  	top: 0; left: 0;
+	  	height: 100%;
+	  	width: 100%;
+	}
 }
 
-.nc-feed {
-    gap: initial !important;
-}
+// .nc-section {
+// 	background-color: inherit !important;
+// }
 
-.nc-caption {
-    display: none !important;
-}
+// .nc-feed {
+//     gap: initial !important;
+// }
 
-.nc-title {
-    display: none !important;
-}
+// .nc-caption {
+//     display: none !important;
+// }
 
-.nc-subtitle{
-    display: none !important;
-}
+// .nc-title {
+//     display: none !important;
+// }
 
-.nc-feed-item {
-    margin-bottom: 0 !important;
-}
+// .nc-subtitle{
+//     display: none !important;
+// }
 
-.nc-section {
-    padding: 0 !important;
-}
+// .nc-feed-item {
+//     margin-bottom: 0 !important;
+// }
+
+// .nc-section {
+//     padding: 0 !important;
+// }
 
 /* @see 	https://stackoverflow.com/questions/42858199/vimeo-full-width */
 

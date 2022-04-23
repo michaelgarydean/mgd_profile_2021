@@ -409,33 +409,29 @@ input:-webkit-autofill:hover {
 }
 
 /* MEDIA EMBEDS */
-/* instagram feed */
-.nc-section {
-  background-color: inherit !important;
+/* instagram feed - nocodeapi */
+#instafeed {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(33rem, 1fr));
+  grid-gap: 1px;
 }
-
-.nc-feed {
-  gap: initial !important;
+#instafeed a {
+  position: relative;
+  border-color: black;
+  box-sizing: border-box;
 }
-
-.nc-caption {
-  display: none !important;
+#instafeed a:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
 }
-
-.nc-title {
-  display: none !important;
-}
-
-.nc-subtitle {
-  display: none !important;
-}
-
-.nc-feed-item {
-  margin-bottom: 0 !important;
-}
-
-.nc-section {
-  padding: 0 !important;
+#instafeed a > img {
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
 
 /* @see 	https://stackoverflow.com/questions/42858199/vimeo-full-width */

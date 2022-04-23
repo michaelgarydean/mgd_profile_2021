@@ -1,8 +1,19 @@
 <html lang="en">
 
 <head>
+	
+	<!--
+		Site created / coded / designed by:
+
+		Michael Gary Dean
+		contact [at] michaeldean.ca
+		github.com/michaelgarydean
+	-->
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+
 
 	<link rel="stylesheet" href="style.css">
 	<link rel="preload" href='/assets/michael-gary-dean_hero-image_upscaled_4k.png' as="image">
@@ -116,9 +127,11 @@
 	  		</div>
 	  	</section>
 
-  		<section class="profile-section" id="profile-history">
-  		<h2>Images</h2>
-  			<embed-instagram-feed url="https://v1.nocodeapi.com/wiklow/instagram/frAGOJpfDCcLGyOt"></embed-instagram-feed>
+  		<section class="profile-section" id="profile-images">
+  			<h2>Images</h2>
+<!--   		<embed-instagram-feed url="https://v1.nocodeapi.com/wiklow/instagram/frAGOJpfDCcLGyOt"></embed-instagram-feed> -->
+			<div id="instafeed"></div>
+	  		<p><a class="see-more-link" href="https://www.instagram.com/michaelgarydean/">More..</a></p>
   		</section>
 
 	  	<section class="profile-section" id="profile-music">
@@ -330,11 +343,25 @@
 <!-- <script src="js/libraries/svg4everybody.min.js"></script>
 <script>svg4everybody();</script> -->
 
-<!-- insta api-->
-<script
-  type="module"
-  src="https://unpkg.com/@nocodeapi/embed-instagram-feed@latest/embed-instagram-feed.js?module"
-></script>
+	<!-- nocode insta api-->
+<!-- 	<script
+	  type="module"
+	  src="https://unpkg.com/@nocodeapi/embed-instagram-feed@latest/embed-instagram-feed.js?module"
+	></script> -->
+
+	<!-- 
+		instafeed instagram plugin
+		@see: https://instafeedjs.com/#/?id=advanced-options
+	-->
+	<script type="text/javascript" src="js/libraries/instafeed.min.js"></script>
+
+	<script type="text/javascript">
+    	var feed = new Instafeed({
+      		accessToken: 'IGQVJVazF4NWw4MnIzZA1d1dy1pa0JBQ0RWcEdnY3hWalpBVGhtSjAzWF9CRVVtTFFtVGJBSUVpckRpTGV1NlRhZA1VmRFJTaDFrWW9YcklDMGR2cVdKc2t0dVNEcGZADYnZARRGZAqa3lTeEcydjJZAeGZA4TQZDZD',
+    		limit: 9
+    	});
+    	feed.run();
+</script>
 
 </body>
 </html>
