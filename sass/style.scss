@@ -542,6 +542,35 @@ input:-webkit-autofill:hover {
 	@extend .single-item-container;
 }
 
+/* instagram feed */
+.nc-section {
+	background-color: inherit !important;
+}
+
+.nc-feed {
+    gap: initial !important;
+}
+
+.nc-caption {
+    display: none !important;
+}
+
+.nc-title {
+    display: none !important;
+}
+
+.nc-subtitle{
+    display: none !important;
+}
+
+.nc-feed-item {
+    margin-bottom: 0 !important;
+}
+
+.nc-section {
+    padding: 0 !important;
+}
+
 /* @see 	https://stackoverflow.com/questions/42858199/vimeo-full-width */
 
 /* vimeo */
