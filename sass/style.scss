@@ -445,8 +445,14 @@ input:-webkit-autofill:hover {
 }
 
 .page-padding {
-	padding: $vertical_margin_outer $side_margin_outer;
+	padding-left: $side_margin_outer;
+	padding-right: $side_margin_outer;
 
+}
+
+.vertical-page-padding {
+	padding-top: $vertical_margin_outer;
+	padding-bottom: $vertical_margin_outer;
 }
 
 /* RESPONSIVE COLUMNS */
@@ -568,6 +574,12 @@ input:-webkit-autofill:hover {
 	  	top: 0; left: 0;
 	  	height: 100%;
 	  	width: 100%;
+	}
+}
+
+@media (max-width: $media_medium_device_width) {
+	#instafeed {
+  		grid-template-columns: repeat(1, minmax(275px - $side_margin_outer - $side_margin_outer, 1fr));
 	}
 }
 
