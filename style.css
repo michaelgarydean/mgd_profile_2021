@@ -284,6 +284,10 @@ input:-webkit-autofill:hover {
   padding-left: 30px;
   padding-right: 30px; }
 
+@media (max-width: 400px) {
+  .page-padding {
+    padding-left: 20px;
+    padding-right: 20px; } }
 .vertical-page-padding {
   padding-top: 20px;
   padding-bottom: 20px; }

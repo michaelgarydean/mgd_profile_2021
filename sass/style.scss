@@ -31,6 +31,8 @@ $social_media_icons_size: 20px;
 
 /* global margins */
 $side_margin_outer: 30px;
+$mobile_side_margin_outer: 20px;
+
 $vertical_margin_outer: 20px;
 $container_margins: 1em 0; /* USE THIS FOR MARGINS FOR ALMOST ALL SINGLE ITEMS + @see .single-item-container, .embed-container */
 
@@ -450,6 +452,13 @@ input:-webkit-autofill:hover {
 
 }
 
+@media (max-width: $media_small_device_width) {
+	.page-padding {
+		padding-left: $mobile_side_margin_outer;
+		padding-right: $mobile_side_margin_outer;
+	}
+}
+
 .vertical-page-padding {
 	padding-top: $vertical_margin_outer;
 	padding-bottom: $vertical_margin_outer;
@@ -480,13 +489,12 @@ input:-webkit-autofill:hover {
 
 @media (max-width: $media_medium_device_width) {
 
-
 	.single-item-container:first-of-type {
 		margin: 0;
 	}
 
   .flex-content-parent {
-    flex-direction: column;
+		flex-direction: column;
 
 	.flex-two-column {
 		width: 100%;
